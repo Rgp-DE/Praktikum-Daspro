@@ -35,10 +35,10 @@ public class SewaMobilLat4 {
                 if (totalBiaya > 2000000) {
                     diskon = totalBiaya * 0.05; // diskon 5%
                     totalBiaya -= diskon;
-                    System.out.println("Diskon 5%: Rp " + (long)diskon);
+                    System.out.println("Diskon 5%: Rp " + (double)diskon);
                 }
 
-                System.out.println("Total biaya sewa mobil: Rp " + (long)totalBiaya);
+                System.out.println("Total biaya sewa mobil: Rp " + (double)totalBiaya);
             }
         scanner.close();
     }
