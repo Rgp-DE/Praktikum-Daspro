@@ -28,15 +28,25 @@ public class SponsorshipLat7 {
         int konsumPeserta = 25000 * 3 * jumlahTim;
         System.out.println("Konsumsi Peserta: Rp " + konsumPeserta);
         int honorJuri = 75000 * jumlahTim;
-        int biayaPendafatranTotal = biayaPendaftaran * jumlahTim;
+        int biayaPendaftaranTotal = biayaPendaftaran * jumlahTim;
         int totalBiaya = biayaPublikasi + biayaDekorasi + konsumPanitJuri + Hadiah + biayaLain + konsumPeserta
                 + honorJuri;
-        double danaDitutupPolinema = totalBiaya * danaPolinema;
-        double danaSubsidi = totalBiaya - danaDitutupPolinema;
-        double danaSponsorship = danaSubsidi - biayaPendafatranTotal;
 
-        System.out.println("Dana Sponsorship yang Diperlukan: Rp " + danaSponsorship);
-        System.out.println("Total Biaya Acara: Rp " + totalBiaya);
+        double danaDitutupPolinema = totalBiaya * danaPolinema;
+        double danaSponsorship;
+        if (danaDitutupPolinema >= totalBiaya) {
+            System.out.println("Polinema menutup semua biaya. Tidak perlu dana sponsorship.");
+            danaSponsorship = 0;
+        } else {
+            double danaSubsidi = totalBiaya - danaDitutupPolinema;
+            danaSponsorship = danaSubsidi - biayaPendaftaranTotal;
+            if (danaSponsorship < 0) {
+                danaSponsorship = 0;
+            }
+            System.out.println("Dana Sponsorship yang Dibutuhkan: Rp " + (double) danaSponsorship);
+        }
+
+        System.out.println("Dana yang Ditanggung Polinema: Rp " + (double) danaDitutupPolinema);
 
 
         scanner.close();
