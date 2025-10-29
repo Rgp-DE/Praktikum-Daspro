@@ -17,7 +17,8 @@ public class SiakadFor22 {
             if (nilai > tertinggi) {
                 tertinggi = nilai;
             }
-            if (nilai < terendah) { terendah = nilai;
+            if (nilai < terendah) { 
+                terendah = nilai;
             }
 
             if (nilai >= 60) {
