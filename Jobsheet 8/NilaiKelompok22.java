@@ -5,14 +5,15 @@ public class NilaiKelompok22 {
         Scanner sc = new Scanner(System.in);
 
         double nilai, totalNilai, rataNilai;
-        double rataTertinggi = 0;     // Menyimpan rata-rata tertinggi
-        int kelompokTertinggi = 0;    // Menyimpan nomor kelompok dengan rata-rata tertinggi
-        int i = 1; 
+        double rataTertinggi = 0;
+        int kelompokTertinggi = 0;
 
-        while (i <= 6) {
+        // Perulangan FOR menggantikan WHILE untuk 6 kelompok
+        for (int i = 1; i <= 6; i++) {
             System.out.println("Kelompok " + i);
             totalNilai = 0;
 
+            // Perulangan FOR untuk input 5 nilai tiap kelompok
             for (int j = 1; j <= 5; j++) {
                 System.out.print("Masukkan nilai ke-" + j + ": ");
                 nilai = sc.nextDouble();
@@ -22,13 +23,11 @@ public class NilaiKelompok22 {
             rataNilai = totalNilai / 5;
             System.out.println("Rata-rata kelompok " + i + ": " + rataNilai);
 
-            // Mengecek apakah rata-rata kelompok ini adalah yang tertinggi
+            // Mengecek apakah rata-rata saat ini tertinggi
             if (rataNilai > rataTertinggi) {
                 rataTertinggi = rataNilai;
                 kelompokTertinggi = i;
             }
-
-            i++;
         }
 
         // Menampilkan hasil akhir
