@@ -18,17 +18,32 @@ public class ArrayRataNilai22 {
             nilaiMhs[i] = sc.nextInt();
         }
 
-        // menghitung total nilai dan mahasiswa yang lulus
+        // inisialisasi nilai tertinggi dan terendah
+        int nilaiTertinggi = nilaiMhs[0];
+        int nilaiTerendah = nilaiMhs[0];
+
+        // menghitung total nilai, jumlah lulus, serta mencari nilai tertinggi & terendah
         for (int i = 0; i < nilaiMhs.length; i++) {
             total += nilaiMhs[i];
+
             if (nilaiMhs[i] > 70) {
                 jumlahLulus++;
+            }
+
+            if (nilaiMhs[i] > nilaiTertinggi) {
+                nilaiTertinggi = nilaiMhs[i];
+            }
+
+            if (nilaiMhs[i] < nilaiTerendah) {
+                nilaiTerendah = nilaiMhs[i];
             }
         }
 
         rata2 = total / nilaiMhs.length;
         System.out.println("\nRata-rata nilai = " + rata2);
         System.out.println("Jumlah mahasiswa yang lulus = " + jumlahLulus);
+        System.out.println("Nilai tertinggi = " + nilaiTertinggi);
+        System.out.println("Nilai terendah = " + nilaiTerendah);
 
         sc.close();
     }
