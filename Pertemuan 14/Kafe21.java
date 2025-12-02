@@ -6,16 +6,30 @@ public class Kafe21 {
 
         Menu("Andi", true, "DISKON50");
 
-        System.out.println("Masukkan nomor menu yang ingin Anda pesan:");
-        int pilihanMenu = sc.nextInt();
+        String kodePromo = "DISKON50"; 
+        int totalKeseluruhan = 0;
 
-        System.out.println("Masukkan jumlah item yang ingin dipesan:");
-        int banyakItem = sc.nextInt();
+        while (true) {
+            System.out.println("Masukkan nomor menu yang ingin Anda pesan (0 untuk selesai):");
+            int pilihanMenu = sc.nextInt();
 
-        String kodePromo = "DISKON50"; // Contoh kode promo
+            if (pilihanMenu == 0) {
+                break; // keluar loop jika user selesai memesan
+            }
 
-        int totalHarga = hitungTotalHarga21(pilihanMenu, banyakItem, kodePromo);
-        System.out.println("Total harga yang harus dibayar: Rp. " + totalHarga);
+            System.out.println("Masukkan jumlah item:");
+            int banyakItem = sc.nextInt();
+
+            int totalPerMenu = hitungTotalHarga21(pilihanMenu, banyakItem, kodePromo);
+            totalKeseluruhan += totalPerMenu;
+
+            System.out.println("Subtotal pesanan ini: Rp. " + totalPerMenu);
+            System.out.println("---------------------------------------");
+        }
+
+        System.out.println("=======================================");
+        System.out.println("Total keseluruhan pesanan: Rp. " + totalKeseluruhan);
+        System.out.println("Terima kasih telah memesan!");
     }
 
     public static void Menu(String namaPelanggan, boolean isMember, String kodePromo) {
@@ -24,11 +38,11 @@ public class Kafe21 {
         if (isMember) {
             System.out.println("Anda adalah member, dapatkan diskon 10% untuk setiap pembelian!");
         }
-        
+
         if (kodePromo.equals("DISKON50")) {
             System.out.println("Kode promo valid! Anda mendapatkan diskon 50%.");
         } else if (kodePromo.equals("DISKON30")) {
-            System.out.println("Kode promo valid! Anda mendapatkan diskon 30%.");
+            System.out.println("Anda mendapatkan diskon 30%.");
         } else {
             System.out.println("Kode promo tidak valid.");
         }
@@ -37,7 +51,7 @@ public class Kafe21 {
         System.out.println("1. Kopi Hitam - Rp. 15.000");
         System.out.println("2. Cappuccino - Rp. 20.000");
         System.out.println("3. Latte - Rp. 22.000");
-        System.out.println("4. Teh Tarik - Rp. 12.000 ");
+        System.out.println("4. Teh Tarik - Rp. 12.000");
         System.out.println("5. Roti Bakar - Rp. 10.000");
         System.out.println("6. Mie Goreng - Rp. 18.000");
         System.out.println("===============================");
@@ -51,12 +65,10 @@ public class Kafe21 {
 
         if (kodePromo.equals("DISKON50")) {
             diskon = hargaTotal * 50 / 100;
-            System.out.println("Kode promo valid: Diskon 50% diterapkan.");
+            System.out.println("Diskon 50% diterapkan untuk pesanan ini.");
         } else if (kodePromo.equals("DISKON30")) {
             diskon = hargaTotal * 30 / 100;
-            System.out.println("Kode promo valid: Diskon 30% diterapkan.");
-        } else {
-            System.out.println("Kode promo invalid. Tidak ada diskon.");
+            System.out.println("Diskon 30% diterapkan untuk pesanan ini.");
         }
 
         return hargaTotal - diskon;
